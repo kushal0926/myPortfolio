@@ -44,9 +44,23 @@
 
 
                     <!-- contact button -->
-                 <div class="button1">
-                    <button>Contact Me</button>
-                   </div>
+                    <button id="showFormBtn">get in touch</button>
+                    <div id="popupForm" class="hidden">
+                        <div class="form-container">
+                            <form action="https://api.web3forms.com/submit" method="POST">
+
+                              <input type="hidden" name="access_key" value="3f1aff00-1369-4637-bd88-5eb81f3791ef">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                                <label>Send me a message</label>
+                                <textarea name="message" style="height: 120px;" placeholder="email me with your questions.."></textarea>
+                                <button id="submit" type="submit" class="inside-btn">Submit</button>
+                            </form>
+                            <button id="closeFormBtn" class="inside-btn">Close</button>
+                        </div>
+                    </div>
    
                    <!-- profile links  -->
                    <div class="profile-link">
@@ -65,7 +79,11 @@
         <!-- about section -->
          <section class="about" id="about">
             <h1>About Me</h1>
-            <div class="icons">
+        
+             <h2>Front-end Developer <br> based in <span>Nepal, Pokhara</span></h2>
+             <p>Hey, my name is Kushal, and I'm a Frontend Developer. My<br> passion is to create and develop a clean user frendly sites. My <br>main stack currently is React/Next.js in combination with <br>Tailwind CSS and TypeScript</p>
+
+             <div class="icons">
                 <h2>Tech Stack:</h2>
                 <ul class="icons-list">
                  <li><i class="ri-html5-fill"></i></li>
@@ -77,19 +95,38 @@
                 </ul>
              </div>
 
+         </section>
 
-            
-
+           <!-- project section -->
+         <section class="project" id="projects">
+            <h1>Projects Comming Soon..</h1>
+            <!-- future projects to be added here  -->
          </section>
 
 
-         <section class="project" id="project">
-            <h1></h1>
-
-
-
-
-         </section>
+         <!-- contact section -->
+          <section class="contact" id="contacts">
+              <div class="container">
+                <div class="header">
+                  <h3>Contact</h3>
+                  <h1>Reach me out via:</h1>
+                </div>
+                <div class="wrapper">
+                  <div class="grp">
+                    <i class="ri-mail-fill"></i>
+                    <span>kushaltamang0926@gmail.com</span>
+                  </div>
+                  <div class="grp">
+                    <i class="ri-phone-fill"></i>
+                    <span>+977 9804165030</span>
+                  </div>
+                  <div class="grp">
+                    <i class="ri-linkedin-fill"></i>
+                    <span>@kushal0926</span>
+                  </div>
+                </div>
+              </div>
+          </section>
 
 
 
@@ -97,6 +134,8 @@
     <a href="#" class="back-top">
         <i class="ri-arrow-up-line"></i>
       </a>
+
+      
         <script src="/script.js"></script>
     </body>
 </html>

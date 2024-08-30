@@ -1,34 +1,32 @@
 :root {
-    --white: #fff;
-    --black: #000;
-    --linkedin: #0A66C2;
-    --sundown: #EFEAE3;
+  --white: #fff;
+  --black: #000;
+  --linkedin: #0A66C2;
+  --sundown: #EFEAE3;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    box-sizing: border-box;
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 body, html {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    background-color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  background-color: var(--white);
 }
 
-
-
-/* styling  the nav section */
-
+/* Navbar styles */
 nav {
   display: flex;
   align-items: end;
   justify-content: space-around;
   box-sizing: border-box;
- }
+}
 
 .navbar {
   width: 100%;
@@ -40,54 +38,52 @@ nav {
   box-sizing: border-box;
 }
 
-
 .navbar h1 {
   font-family: "Permanent Marker", cursive;
   font-weight: 100;
   font-style: normal;
+  color: var(--linkedin)
 }
 
 .navbar h1:hover {
-  color: var(--linkedin);
+  color: var(--black);
 }
 
-
 .navbar ul li {
- display: inline-block;
- list-style: none;
- margin-bottom: 0.5em;
+  display: inline-block;
+  list-style: none;
+  margin-bottom: 0.5em;
 }
 
 .navbar li a {
-   color: var(--black);
-   padding-right: 3vw;
+  color: var(--black);
+  padding-right: 3vw;
 }
 
 li a:hover {
   color: var(--linkedin);
-   text-decoration: underline;
+  text-decoration: underline;
 }
 
-
-/* home section */
-
+/* Home section */
 .home {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;  
- }
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;  
+  height: 25rem;
+}
 
 .introduction {
-    margin: 5rem 1vw auto 1vw;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+  margin: 5rem 1vw auto 1vw;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.profile-image  {
+.profile-image {
   width: 15rem;
   height: 15rem;
   background-image: url("/images/meMyself.webp");
@@ -103,13 +99,13 @@ li a:hover {
 
 @keyframes morph {
   0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
   50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
   }
   100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
 }
 
@@ -118,7 +114,6 @@ li a:hover {
   flex-direction: column; 
   align-items: center;
 }
-
 
 .introduction p {
   font-size: 1rem;
@@ -129,12 +124,16 @@ li a:hover {
   font-family: "Permanent Marker", cursive;
   font-weight: 400;
   font-style: normal;
+  color: var(--linkedin);
 }
 
+.introduction h1:hover {
+  color: var(--black);
+}
 
- /* button styling */
- 
- button {
+/* Button styling */
+
+#showFormBtn {
   background-color: white;
   color: var(--black);
   border-radius: 10em;
@@ -148,23 +147,92 @@ li a:hover {
   box-shadow: 0 0 0 0 var(--black);
 }
 
-button:hover {
+#showFormBtn:hover {
   transform: translateY(-4px) translateX(-2px);
   box-shadow: 2px 5px 0 0 var(--black);
-};
+}
 
-button:active {
+#showFormBtn:active {
   transform: translateY(2px) translateX(1px);
   box-shadow: 0 0 0 0 var(--black);
-};
+}
 
-/* profile-link styling */
+/*styling the popup from which comes whin i click the hire me button until then its hidden */
 
-.profile-link {
-  margin-top: 10px;
-  padding: 10em;
- }
- 
+#popupForm {
+  position: fixed; /* Fixes the form in place relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  visibility: hidden; /* Initially hidden */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+
+#popupForm.show {
+  visibility: visible;
+  opacity: 1; /* Fade in */
+}
+
+.form-container {
+  background-color: var(--white);
+  padding: 30px 20px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  width: 25rem; 
+  max-width: 90%; 
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #333;
+}
+
+.inside-btn {
+  background-color: white;
+  color: var(--black);
+  border-radius: 10em;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 0.8em 2em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid var(--black);
+  box-shadow: 0 0 0 0 var(--black);
+}
+
+.inside-btn:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 var(--black);
+}
+
+.inside-btn:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 var(--black);
+}
+
+/* Profile-link styling */
+
 .linkedin {
   color: var(--black);
   font-size: 2rem;
@@ -174,8 +242,7 @@ button:active {
 
 .linkedin:hover {
   color: var(--linkedin);
- }
-
+}
 
 .github {
   color: var(--black);
@@ -183,36 +250,51 @@ button:active {
   padding: 0;
   margin: 0;
 }
- 
+
 .github:hover {
   color: var(--linkedin);
 }
 
+/* About me section */
 
-
- /* about me */
- 
 .about {
-  margin-top: 25vh;
-  
+  height: 25rem;
 }
 
 .about h1 {
   font-size: 3rem;
   text-align: center;
- }
+}
 
- 
- .icons {
+.about h2 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.about span {
+  font-size: 3rem;
+  color: var(--linkedin);
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.about span:hover {
+  color: var(--black);
+}
+
+.about p {
+  text-align: center;
+}
+
+.icons {
   width: 24rem;
   margin: 2rem auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--black);
-  border-radius: 10% 10% 10%;
   box-sizing: border-box;
- }
+}
 
 .icons h2 {
   font-size: 1em;
@@ -227,31 +309,123 @@ button:active {
   display: flex;
   flex-direction: row;
   gap: 0.2em;
- }
+}
 
 .icons ul li:hover {
   color: var(--linkedin);
 }
 
+/* Project section */
+.project {
+  margin-top: 10rem;
+  height: 25rem;
+}
+
+.project h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: var(--linkedin);
+}
+
+/* Contact section */
+
+.contact {
+  position: relative;
+  display: flex;
+  font-size: 2em;
+  height: 25rem;
+  padding-block: 2rem;
+}
+
+.contact h3 {
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+.contact h1 {
+  color: var(--linkedin);
+}
+
+.contact .container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact .wrapper {
+  font-size: 30px;
+}
+
+.contact .wrapper .grp {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact .wrapper .grp i {
+  color: var(--linkedin);
+}
+
+.contact .grp:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.contact .grp i {
+  font-size: 40px;
+  margin-right: 1rem;
+}
+
+.contact .footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.contact .footer p {
+  font-size: 40px;
+  font-weight: 200;
+  color: var(--black);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.contact .footer p::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 330px;
+  height: 2px;
+  background: var(--black);
+  border-radius: 1rem;
+}
+
+.contact .footer a {
+  text-decoration: none;
+  background: var(--black);
+  color: #eee;
+  font-weight: bold;
+  font-size: 20px;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  padding: 1rem 2rem;
+  transition: 0.2s ease-in;
+}
+
+.contact .footer a:hover {
+  transform: scale(1.05);
+}
 
 
-
-
-
-
-
-
-
-
-
-
- /* projrct section */
-
-
-
-
-/* styling the back to top button */
-
+/* Back to top button */
 .back-top {
   text-decoration: none;
   font-size: 20px;
@@ -281,108 +455,4 @@ button:active {
   pointer-events: auto;
 }
 
-/* make page responsive with mediaquery */
-
-@media (max-width: 1300px) {
-  .navbar ul {
-      flex-direction: column; /* Stack items vertically on smaller screens */
-  }
-
-  .icons {
-      width: 100%; /* Adjust width to fit smaller screens */
-      margin: 2rem auto; /* Center the icons */
-  }
-}
-
-@media (max-width: 1000px) {
-  .introduction {
-      margin: 3rem 1vw;
-  }
-
-  .profile-image {
-      width: 10rem;
-      height: 10rem;
-      margin-right: 1rem;
-  }
-
-  .introduction h1 {
-      font-size: 1.5rem;
-  }
-
-  .introduction p {
-      font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 700px) {
-  .navbar ul {
-      padding: 0;
-  }
-
-  .navbar li a {
-      padding-right: 1em;
-  }
-
-  .profile-image {
-      width: 8rem;
-      height: 8rem;
-      margin-right: 0.5rem;
-  }
-
-  .introduction h1 {
-      font-size: 1.2rem;
-  }
-
-  .introduction p {
-      font-size: 0.8rem;
-  }
-
-  .back-top {
-      width: 2.5rem;
-      height: 2.5rem;
-      font-size: 16px;
-      bottom: 2%;
-      right: 2%;
-  }
-
-  .about {
-      margin-top: 20vh;
-  }
-}
-
-@media (max-width: 500px) {
-  .navbar ul {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .navbar li a {
-      padding: 0.5em 0;
-  }
-
-  .profile-image {
-      width: 6rem;
-      height: 6rem;
-  }
-
-  .introduction h1 {
-      font-size: 1rem;
-  }
-
-  .introduction p {
-      font-size: 0.7rem;
-  }
-
-  .icons {
-      width: 100%;
-      margin: 1rem auto;
-  }
-
-  .back-top {
-      width: 2rem;
-      height: 2rem;
-      font-size: 14px;
-      bottom: 1%;
-      right: 1%;
-  }
-}
+/* Responsive design */
